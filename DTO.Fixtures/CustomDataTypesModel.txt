@@ -1,0 +1,19 @@
+﻿import { SimpleDataTypesModel } from '././simple-data-types.model';
+import { SimpleInheritanceDataTypeModel } from '././simple-inheritance-data-type.model';
+
+export class CustomDataTypesModel {
+    SimpleDataTypesModel: SimpleDataTypesModel;
+    SimpleDataTypesModelList: SimpleDataTypesModel[];
+    SimpleDataTypesModelArray: SimpleDataTypesModel[];
+    SimpleDataTypesModelDictionary: Record<string, SimpleDataTypesModel>;
+    SimpleInheritanceDataTypeModel: SimpleInheritanceDataTypeModel;
+    SimpleInheritanceDataTypeModelList: SimpleInheritanceDataTypeModel[];
+    SimpleInheritanceDataTypeModelArray: SimpleInheritanceDataTypeModel[];
+    SimpleInheritanceDataTypeModelDictionary: Record<string, SimpleInheritanceDataTypeModel>;
+
+	constructor(partial?: Partial<CustomDataTypesModel>) {
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

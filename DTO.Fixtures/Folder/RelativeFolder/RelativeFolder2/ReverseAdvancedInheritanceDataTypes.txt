@@ -1,0 +1,12 @@
+﻿import { AdvancedInheritanceDataTypeModel } from './../../advanced-inheritance-data-type.model';
+
+export class ReverseAdvancedInheritanceDataTypeModel extends AdvancedInheritanceDataTypeModel {
+    TestValue1: number;
+
+	constructor(partial?: Partial<ReverseAdvancedInheritanceDataTypeModel>) {
+		super();
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿import { RelativeInFolderDataTypeModel } from './RelativeFolder/RelativeFolder2/relative-in-folder-data-type.model';
+
+export class AdvancedInheritanceDataTypeModel extends RelativeInFolderDataTypeModel {
+    TestValue: number;
+
+	constructor(partial?: Partial<AdvancedInheritanceDataTypeModel>) {
+		super();
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

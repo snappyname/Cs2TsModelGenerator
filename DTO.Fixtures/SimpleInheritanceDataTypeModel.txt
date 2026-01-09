@@ -1,0 +1,12 @@
+﻿import { SimpleDataTypesModel } from '././simple-data-types.model';
+
+export class SimpleInheritanceDataTypeModel extends SimpleDataTypesModel {
+    TestInt: number;
+
+	constructor(partial?: Partial<SimpleInheritanceDataTypeModel>) {
+		super();
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

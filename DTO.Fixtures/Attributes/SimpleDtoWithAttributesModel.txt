@@ -1,0 +1,9 @@
+﻿export class SimpleDtoWithAttributesModel {
+    intProperty: number;
+
+	constructor(partial?: Partial<SimpleDtoWithAttributesModel>) {
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

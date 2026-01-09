@@ -1,0 +1,12 @@
+export class SimpleDataTypesModel {
+    A: number;
+    B: string;
+    C: boolean;
+    D: number;
+
+	constructor(partial?: Partial<SimpleDataTypesModel>) {
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

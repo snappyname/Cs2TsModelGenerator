@@ -1,0 +1,13 @@
+﻿export class ListAndDictionariesDataTypesModel {
+    Test1DIntList: number[];
+    Test2DIntList: number[][];
+    Test1DStringArray: string[];
+    Test2DBoolArray: boolean[][];
+    TestDictionary: Record<number, string>;
+
+	constructor(partial?: Partial<ListAndDictionariesDataTypesModel>) {
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

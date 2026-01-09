@@ -1,0 +1,58 @@
+name: Release Linux
+
+on:
+  workflow_run:
+    workflows: ["tests"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      startsWith(github.event.workflow_run.head_branch, 'v')
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Normalize version
+      id: version
+      shell: bash
+      run: |
+        TAG="${{ github.event.workflow_run.head_branch }}"
+        VERSION="${TAG#v}"
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Publish linux-x64
+      run: |
+        dotnet publish ModelGenerator/ModelGenerator.csproj \
+          -c Release \
+          /p:Version=${{ steps.version.outputs.version }} \
+          -r linux-x64 \
+          --self-contained false \
+          -p:PublishSingleFile=false \
+          -p:IncludeNativeLibrariesForSelfExtract=true \
+          -p:EnableCompressionInSingleFile=true \
+          -o publish/linux
+
+    - name: Make executable
+      run: chmod +x publish/linux/ModelGenerator
+
+    - name: Tar.gz
+      run: |
+        tar -czvf ModelGenerator-linux-x64.tar.gz -C publish/linux .
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.event.workflow_run.head_branch }}
+        files: ModelGenerator-linux-x64.tar.gz

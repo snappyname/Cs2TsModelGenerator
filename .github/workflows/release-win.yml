@@ -1,0 +1,57 @@
+name: Release Windows
+
+on:
+  workflow_run:
+    workflows: ["tests"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  build-win:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      startsWith(github.event.workflow_run.head_branch, 'v')
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Normalize version
+      id: version
+      shell: pwsh
+      run: |
+        $tag = "${{ github.event.workflow_run.head_branch }}"
+        $version = $tag -replace '^v', ''
+        "version=$version" >> $env:GITHUB_OUTPUT
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Publish win-x64
+      run: >
+        dotnet publish ModelGenerator/ModelGenerator.csproj
+        -c Release
+        /p:Version=${{ steps.version.outputs.version }}
+        -r win-x64
+        --self-contained false
+        -p:PublishSingleFile=false
+        -p:IncludeNativeLibrariesForSelfExtract=true
+        -p:EnableCompressionInSingleFile=true
+        -o publish/win
+
+    - name: Zip
+      run: |
+        Compress-Archive `
+          -Path publish/win/* `
+          -DestinationPath ModelGenerator-win-x64.zip
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.event.workflow_run.head_branch }}
+        files: ModelGenerator-win-x64.zip

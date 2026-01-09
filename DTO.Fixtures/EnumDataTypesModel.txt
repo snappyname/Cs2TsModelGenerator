@@ -1,0 +1,12 @@
+﻿export class EnumDataTypesModel {
+    TestSimpleEnum: any;
+    ListOfSimpleEnum: any[];
+    ArrayOfSimpleEnum: any[];
+    DictionaryOfSimpleEnum: Record<number, any>;
+
+	constructor(partial?: Partial<EnumDataTypesModel>) {
+		if (partial) {
+			Object.assign(this, partial);
+		}
+	}
+}

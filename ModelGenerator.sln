@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelGenerator", "ModelGenerator\ModelGenerator.csproj", "{96B5D76E-4B34-4B1F-B44A-EB61082125E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelGenerator.Tests", "ModelGenerator.Tests\ModelGenerator.Tests.csproj", "{9039F8E5-5DC2-40F8-961E-BD3B269B33D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO.Fixtures", "DTO.Fixtures\DTO.Fixtures.csproj", "{F0885862-516C-4BC7-B8DB-BD7D181400EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96B5D76E-4B34-4B1F-B44A-EB61082125E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B5D76E-4B34-4B1F-B44A-EB61082125E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B5D76E-4B34-4B1F-B44A-EB61082125E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B5D76E-4B34-4B1F-B44A-EB61082125E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9039F8E5-5DC2-40F8-961E-BD3B269B33D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9039F8E5-5DC2-40F8-961E-BD3B269B33D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9039F8E5-5DC2-40F8-961E-BD3B269B33D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9039F8E5-5DC2-40F8-961E-BD3B269B33D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0885862-516C-4BC7-B8DB-BD7D181400EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0885862-516C-4BC7-B8DB-BD7D181400EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0885862-516C-4BC7-B8DB-BD7D181400EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0885862-516C-4BC7-B8DB-BD7D181400EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
