@@ -38,6 +38,14 @@ namespace ModelGenerator
             var compilation = await project.GetCompilationAsync() ?? throw new InvalidOperationException("Compilation is null");
             return (compilation, solutionDir);
         }
+        
+        public static void FinishConsoleOutput()
+        {
+            if (!_config.CloseAfterGeneration)
+            {
+                Console.ReadLine();
+            }
+        }
 
         private static List<AnalyzedClass> AnalyzeClasses(ClassAnalyzer analyzer)
         {
@@ -56,7 +64,8 @@ namespace ModelGenerator
                                   $"\\{Helpers.GetFileName(analyzedClass.Name, _config)}.ts";
                 WriteFileWithDirectories(filePath, modelContent);
             }
-            Console.ReadLine();
+
+            FinishConsoleOutput();
         }
         
         private static void WriteFileWithDirectories(string filePath, string content)

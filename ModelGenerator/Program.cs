@@ -9,7 +9,7 @@ internal class Program
         if (args.Length == 0)
         {
             Console.WriteLine("Config path is required");
-            Console.ReadLine();
+            GeneratorApp.FinishConsoleOutput();
         }
         await new GeneratorApp().RunAsync(args[0]);
     }

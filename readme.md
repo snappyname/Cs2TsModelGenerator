@@ -12,20 +12,10 @@
 
 or create .bat app (for windows)
 
-```bat  
-@echo off  
-set PARAM=config.json  
-ModelGenerator2.exe "%PARAM%"  
-```  
-
+```bat  @echo off  set PARAM=config.json  ModelGenerator2.exe "%PARAM%"  ```    
 or, for linux
 
-```bash  
-#!/usr/bin/env bash  
-PARAM="config.json"  
-./ModelGenerator "$PARAM"  
-```  
-
+```bash  #!/usr/bin/env bash  PARAM="config.json"  ./ModelGenerator "$PARAM"  ```
 ### Requirements / Limits
 * All DTO's must be in one project
 * Not supported records and interfaces
@@ -34,7 +24,7 @@ PARAM="config.json"
 
 ### Supported data types
 
-| cs                 | ts                                        |
+| .cs                | .ts                                       |
 | ------------------ | ----------------------------------------- |
 | `int`, `long`      | `number`                                  |
 | `string`           | `string`                                  |
@@ -49,16 +39,17 @@ Some abstract types like `IList`/`IDictionary`/`IEnumerable` and others are not 
 
 ### Config.json settings
 
-| Value                           | Meaning                            | Example                                                                          |
-| ------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------- |
-| `solutionPath` (string)         | path to solution (.sln file)       | `C:\\DEV\\TemplateWebApi\\TemplateWebApi.sln`                                    |
-| `outputPath` (string)           | path to output models              | `C:\\DEV\\TemplateWebAuth\\models\\`                                             |
-| `targetProjectName` (string)    | name of project that include dto's | `DTO`                                                                            |
-| `fieldLowerCase` (bool)         | name of result fields              | `SomeValue` -> `someValue` (cs -> ts)                                            |
-| `classNameLowerCase` (bool)     | name of result class               | `SomeValueModel` -> `someValueModel` (cs -> ts)                                  |
-| `classFileNameType` (number)    | name of result file                | See below                                                                        |
-| `classFileNameLowerCase` (bool) | case of result file                | Same as `classNameLowerCase`                                                     |
-| `enumType` (string)             | enum's map type                    | All enums will be converted to your string; I recommend to use `any` or `number` |
+| Value                           | Meaning                               | Example                                                                          |
+| ------------------------------- | ------------------------------------- | -------------------------------------------------------------------------------- |
+| `solutionPath` (string)         | path to solution (.sln file)          | `C:\\DEV\\TemplateWebApi\\TemplateWebApi.sln`                                    |
+| `outputPath` (string)           | path to output models                 | `C:\\DEV\\TemplateWebAuth\\models\\`                                             |
+| `targetProjectName` (string)    | name of project that include dto's    | `DTO`                                                                            |
+| `fieldLowerCase` (bool)         | name of result fields                 | `SomeValue` -> `someValue` (cs -> ts)                                            |
+| `classNameLowerCase` (bool)     | name of result class                  | `SomeValueModel` -> `someValueModel` (cs -> ts)                                  |
+| `classFileNameType` (number)    | name of result file                   | See below                                                                        |
+| `classFileNameLowerCase` (bool) | case of result file                   | Same as `classNameLowerCase`                                                     |
+| `enumType` (string)             | enum's map type                       | All enums will be converted to your string; I recommend to use `any` or `number` |
+| `closeAfterGeneration` (bool)   | close console after finish generation | Useful if you use console from ide                                               |
 
 ### classFileNameType examples
 
@@ -72,18 +63,19 @@ It also works with `classNameLowerCase`. On examples `classNameLowerCase = false
 
 ### config.json example
 
-```
-{  
-  "solutionPath": "C:\\DEV\\TemplateWebApi\\TemplateWebApi.sln",  
-  "outputPath": "C:\\DEV\\TemplateWebAuth\\models\\",  
-  "targetProjectName": "DTO",  
-  "fieldLowerCase": true,  
-  "classNameLowerCase": false,  
-  "classFileNameType": 3,  
-  "classFileNameLowerCase": true,  
-  "enumType": "any"  
-}
-```
+```  
+{    
+  "solutionPath": "C:\\DEV\\TemplateWebApi\\TemplateWebApi.sln",    
+  "outputPath": "C:\\DEV\\TemplateWebAuth\\models\\",    
+  "targetProjectName": "DTO",    
+  "fieldLowerCase": true,    
+  "classNameLowerCase": false,    
+  "classFileNameType": 3,    
+  "classFileNameLowerCase": true,    
+  "enumType": "any",
+  "closeAfterGeneration": false
+ }  
+```  
 
 
 ### Custom attributes
@@ -93,9 +85,9 @@ This generator is compatible with [GeneratorAttributes (Github)](https://github.
 | Attribute                   | Explain                                                                                                                  |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `CustomFieldGenerationName` | Can be added on field to override name of result (ts file). The settings from config.json are not applied to this field. |
-| `GeneratorIgnore`           | Can be added to field or class. Generator will be ignore this field or class                     
-
----
+| `GeneratorIgnore`           | Can be added to field or class. Generator will be ignore this field or class                                             |
+  
+---  
 
 ### TODO (maybe)
 
@@ -103,7 +95,5 @@ This generator is compatible with [GeneratorAttributes (Github)](https://github.
 * Add `CustomFileGenerationName` attribute
 * Add `CustomClassGenerationName` attribute
 
----
+---  
 ## Feel free to contribute or open issue if something wrong
-
- 

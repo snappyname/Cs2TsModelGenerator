@@ -10,4 +10,5 @@ public class GeneratorConfig
     public int ClassFileNameType { get; set; } = 3;
     public bool ClassFileNameLowerCase { get; set; } = true;
     public string EnumType { get; set; } = "any";
+    public bool CloseAfterGeneration { get; set; } = false;
 }

@@ -6,5 +6,6 @@
   "classNameLowerCase": false,
   "classFileNameType": 3,
   "classFileNameLowerCase": true,
-  "enumType": "any"
+  "enumType": "any",
+  "closeAfterGeneration": false
 }
